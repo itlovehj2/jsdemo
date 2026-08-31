@@ -3,21 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS Library Atlas | JavaScript 기능 모음</title>
+  <title>실무 필수 JavaScript 라이브러리 TOP 10 | 인터랙티브 랩 & 활용 가이드</title>
+  <meta name="description" content="실무에서 가장 많이 활용되는 자바스크립트 라이브러리 10선의 상세 활용 시나리오와 직접 테스트할 수 있는 실시간 인터랙티브 데모 모음" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- 10 필수 JS 라이브러리 CDN -->
+  <!-- 1. Day.js -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/customParseFormat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/ko.js"></script>
+  <!-- 2. Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- 3. SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- 4. SortableJS -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+  <!-- 5. Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <!-- 6. Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <!-- 7. Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <!-- 8. Cleave.js -->
+  <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+  <!-- 9. Lodash -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <!-- 10. Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-  <div class="background-glow glow-one"></div><div class="background-glow glow-two"></div>
-  <header class="hero">
-    <nav class="topbar"><div><p class="eyebrow">codex 생성 프로젝트</p><h1>JS Library Atlas</h1></div><div class="topbar-actions"><button id="themeToggle" class="ghost-btn">라이트 모드</button><a href="#libraryGrid" class="primary-btn">기능 둘러보기</a></div></nav>
-    <section class="hero-content"><div class="hero-copy"><p class="hero-kicker">HTML · CSS · JavaScript</p><h2>자주 쓰는 JavaScript 기능 30가지를 직접 눌러보고 배워보세요</h2><p class="hero-desc">각 기능의 한글 설명과 실제 사용 예시를 카드에서 확인하고, 카드를 클릭해 간단한 동작 미리보기까지 살펴볼 수 있습니다. 검색과 카테고리 필터도 함께 제공합니다.</p><div class="hero-stats"><article><strong>30</strong><span>기능 카드</span></article><article><strong>6</strong><span>카테고리</span></article><article><strong>100%</strong><span>Vanilla JS</span></article></div></div>
-      <aside class="hero-panel"><div class="panel-header"><span class="status-dot"></span>실시간 기능 탐색</div><div class="control-row"><label for="search">검색</label><input id="search" type="search" placeholder="chart, modal, 검색..." /></div><div class="control-row"><label for="category">카테고리</label><select id="category"></select></div><div class="panel-footer"><p id="resultCount">30개 기능</p><button id="clearFilters" class="ghost-btn">필터 초기화</button></div></aside>
-    </section>
+  <!-- Ambient background glow effects -->
+  <div class="glow-sphere sphere-1"></div>
+  <div class="glow-sphere sphere-2"></div>
+  <div class="glow-sphere sphere-3"></div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="brand">
+        <div class="brand-badge"><i data-lucide="sparkles"></i> 2026 Essential Toolkit</div>
+        <h1 class="brand-title">JavaScript <span class="gradient-text">Top 10 Libraries</span></h1>
+        <p class="brand-subtitle">실무에서 가장 많이 쓰는 자바스크립트 라이브러리 10선 · <strong>언제 쓰는지</strong> 완벽 정리 & <strong>실시간 라이브 랩</strong></p>
+      </div>
+      <div class="header-actions">
+        <a href="https://github.com/itlovehj2/jsdemo" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+          <i data-lucide="github"></i> GitHub 저장소
+        </a>
+      </div>
+    </div>
   </header>
-  <main class="page-shell"><section class="section-heading"><div><p class="eyebrow">Feature Library</p><h3>JavaScript 기능 갤러리</h3></div><p>카드마다 기능 설명과 실무에서 활용할 수 있는 예시를 담았습니다.</p></section><section class="chip-row" id="quickChips"></section><section id="libraryGrid" class="library-grid"></section></main>
-  <section class="spotlight"><div class="section-heading"><div><p class="eyebrow">Interactive Lab</p><h3>기능 상세 및 미니 데모</h3></div><p>카드를 클릭하면 한글 설명, 사용 예시와 동작 미리보기가 나타납니다.</p></section><div class="spotlight-layout"><article class="demo-window"><div class="window-bar"><span></span><span></span><span></span></div><div id="demoContent" class="demo-content"><div class="placeholder"><h4>카드를 선택해 보세요</h4><p>30개 기능 중 하나를 누르면 상세 정보와 예시를 확인할 수 있습니다.</p></div></div></article><aside class="favorites"><div class="favorites-head"><h4>즐겨찾기</h4><button id="resetFavorites" class="ghost-btn small">초기화</button></div><ul id="favoriteList"></ul></aside></div></section>
-  <footer class="footer"><p>codex생성 폴더에서 HTML, CSS, JavaScript만으로 만들었습니다.</p></footer>
-  <template id="cardTemplate"><article class="lib-card"><div class="card-top"><span class="card-badge"></span><button class="favorite-btn" aria-label="즐겨찾기">☆</button></div><h4></h4><p class="card-desc"></p><p class="card-example"><strong>예시</strong></p><div class="card-demo"><strong>직접 테스트</strong><div class="inline-demo"></div></div><div class="card-tags"><span class="tag">기능</span></div></article></template>
+
+  <!-- Filter & Search Bar -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-card">
+        <div class="search-box">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="searchInput" placeholder="라이브러리명, 활용 분야, 기능 키워드로 검색 (예: 날짜, 차트, 애니메이션, 알림...)" />
+        </div>
+        <div class="category-tabs" id="categoryTabs">
+          <button class="tab-btn active" data-category="all">전체보기 (10)</button>
+          <button class="tab-btn" data-category="data">데이터 & 유틸 (3)</button>
+          <button class="tab-btn" data-category="ui">UI 컴포넌트 & 피드백 (3)</button>
+          <button class="tab-btn" data-category="animation">모션 & 이펙트 (3)</button>
+          <button class="tab-btn" data-category="form">입력 폼 & 아이콘 (1)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <main class="main-content">
+    <div class="container">
+      <div class="grid-layout" id="libraryGrid">
+        <!-- 10 Library Cards will be rendered here with full details and live demos -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 JS Top 10 Library Master · 실무 역량 강화를 위한 인터랙티브 플레이그라운드</p>
+      <p class="footer-sub">Day.js · Chart.js · SweetAlert2 · SortableJS · Confetti · Typed.js · Anime.js · Cleave.js · Lodash · Lucide</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
